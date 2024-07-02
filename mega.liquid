@@ -1,0 +1,68 @@
+{% for selectedCategories in shop.metaobjects.menu_images.values %}
+    {% if selectedCategories %}
+    {% assign categoryName = selectedCategories.name | handle %}
+   
+          {% assign collection_menu_1 = selectedCategories.image_collection_1.value   %}
+          {% assign collection_menu_2 = selectedCategories.image_collection_2.value   %}
+          {% assign collection_menu_3 = selectedCategories.image_collection_3.value   %}
+        
+   
+               {% if collection_menu_1 != blank %}
+                 <li class="megamenu-img-inner  {% if currentlink ==  selectedCategories.name %}initial-mega{% endif %} menu-{{ categoryName }}" style="display:none">
+                <div class="megamenu-img-box megamenu-img-box-1">
+                 <a href="{{ collection_menu_1.url }}" class="megamenu-img-box-link">
+                     <div class="menu-box-img">
+                       <img src="{{ selectedCategories.image_1 | img_url:'master' }}">
+                     </div>
+                     <div class="menu-box-text">
+                        {% if selectedCategories.image_text_1 != blank %}
+                         <p>{{ selectedCategories.image_text_1 }}</p>
+                            {% else %}
+                        <p>{{ collection_menu_1.title }}</p>
+                        {% endif %}
+                     </div>
+                 </a>
+               </div>
+                 </li>
+                 {% endif %}
+   
+              {% if collection_menu_2 != blank %}
+                <li class="megamenu-img-inner {% if currentlink ==  selectedCategories.name %}initial-mega{% endif %}  menu-{{ categoryName }}" style="display:none">
+               <div class="megamenu-img-box megamenu-img-box-2">
+                 <a href="{{ collection_menu_2.url }}" class="megamenu-img-box-link">
+                     <div class="menu-box-img">
+                       <img src="{{ selectedCategories.image_2 | img_url:'master' }}">
+                     </div>
+                     <div class="menu-box-text">
+                        {% if selectedCategories.image_text_2 != blank %}
+                         <p>{{ selectedCategories.image_text_2 }}</p>
+                            {% else %}
+                        <p>{{ collection_menu_2.title }}</p>
+                        {% endif %}
+                     </div>
+                 </a>
+               </div>
+                 </li>
+             {% endif %}
+   
+               {% if collection_menu_3 != blank %}
+                 <li class="megamenu-img-inner {% if currentlink ==  selectedCategories.name %}initial-mega{% endif %}  menu-{{ categoryName }}" style="display:none">
+               <div class="megamenu-img-box megamenu-img-box-3">
+                 <a href="{{ collection_menu_3.url }}" class="megamenu-img-box-link">
+                     <div class="menu-box-img">
+                       <img src="{{ selectedCategories.image_3 | img_url:'master' }}">
+                     </div>
+                     <div class="menu-box-text">
+                       {% if selectedCategories.image_text_3 != blank %}
+                         <p>{{ selectedCategories.image_text_3 }}</p>
+                            {% else %}
+                        <p>{{ collection_menu_3.title }}</p>
+                        {% endif %}
+                     </div>
+                 </a>
+               </div>
+                </li>
+             {% endif %}
+      
+    {% endif %}
+   {% endfor %}
